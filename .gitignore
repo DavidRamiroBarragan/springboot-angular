@@ -69,6 +69,7 @@ local.properties
 
 #Angular
 node_modules
+*tsc.*
 
 # e2e
 /e2e/*.js
