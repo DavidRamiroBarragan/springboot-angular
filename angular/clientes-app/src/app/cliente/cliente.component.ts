@@ -4,9 +4,9 @@ import { ClienteService } from './cliente.service';
 
 @Component({
   selector: 'app-clientes',
-  templateUrl: './clientes.component.html'
+  templateUrl: './cliente.component.html'
 })
-export class ClientesComponent implements OnInit {
+export class ClienteComponent implements OnInit {
   clientes: Cliente[];
 
   constructor(private clienteService: ClienteService) {}

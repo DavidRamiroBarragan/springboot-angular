@@ -5,15 +5,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { DirectivaComponent } from './directiva/directiva.component';
-import { ClientesComponent } from './clientes/clientes.component';
-import { ClienteService } from './clientes/cliente.service';
+import { ClienteComponent } from './cliente/cliente.component';
+import { ClienteService } from './cliente/cliente.service';
 import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/clientes', pathMatch: 'full' },
   { path: 'directivas', component: DirectivaComponent },
-  { path: 'clientes', component: ClientesComponent },
+  { path: 'clientes', component: ClienteComponent },
 ];
 
 @NgModule({
@@ -22,7 +22,7 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     DirectivaComponent,
-    ClientesComponent
+    ClienteComponent
   ],
   imports: [
     BrowserModule,
