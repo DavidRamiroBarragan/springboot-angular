@@ -109,3 +109,9 @@ testem.log
 .c9/
 *.launch
 *.sublime-workspace
+angular/clientes-app/package-lock.json
+angular/clientes-app/package-lock.json
+*-2018*.java
+angular/clientes-app/package-lock.json
+angular/clientes-app/.vscode/*
+*/package-lock.json
