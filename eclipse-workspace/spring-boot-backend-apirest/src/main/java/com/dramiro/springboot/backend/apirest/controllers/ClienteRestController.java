@@ -6,9 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -31,14 +33,34 @@ public class ClienteRestController {
 	}
 	
 	@GetMapping("/clientes/{id}")
-	public Cliente show(@PathVariable Long id) {
+	public Cliente show(@PathVariable final Long id) {
 		return clienteService.findById(id);
 	}
 	
 	@PostMapping("/clientes")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Cliente create(@RequestBody Cliente cliente) {
+	public Cliente create(@RequestBody final Cliente cliente) {
 		cliente.setCreateAt(new Date());
 		return clienteService.save(cliente);
 	}
+	
+	@PutMapping("/clientes/{id}")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Cliente update(@PathVariable final Long id, @RequestBody final Cliente cliente) {
+		final Cliente clienteActual = clienteService.findById(id);
+		
+		clienteActual.setNombre(cliente.getNombre());
+		clienteActual.setApellido(cliente.getApellido());
+		clienteActual.setEmail(cliente.getEmail());
+		clienteActual.setCreateAt(cliente.getCreateAt());
+		
+		return clienteService.save(clienteActual);
+	}
+	
+	@DeleteMapping("/clientes/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void delete(@PathVariable final Long id) {
+		clienteService.delete(id);
+	}
+	
 }
