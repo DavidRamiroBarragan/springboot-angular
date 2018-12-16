@@ -9,8 +9,8 @@ import swal from 'sweetalert2';
   templateUrl: './form.component.html'
 })
 export class FormComponent implements OnInit {
-   cliente: Cliente = new Cliente();
-   titulo: String = 'Crear cliente';
+  cliente: Cliente = new Cliente();
+  titulo: String = 'Crear cliente';
 
   constructor(
     private clienteService: ClientesService,
@@ -37,8 +37,21 @@ export class FormComponent implements OnInit {
       const id = params['id'];
 
       if (id) {
-        this.clienteService.getCliente(id).subscribe(cliente => this.cliente = cliente);
+        this.clienteService
+          .getCliente(id)
+          .subscribe(cliente => (this.cliente = cliente));
       }
+    });
+  }
+
+  public update(): void {
+    this.clienteService.update(this.cliente).subscribe(cliente => {
+      this.router.navigate(['/clientes']);
+      swal(
+        'Cliente actualizado',
+        `Cliente ${cliente.nombre} ${cliente.apellido} actualizado con exito`,
+        'success'
+      );
     });
   }
 }
